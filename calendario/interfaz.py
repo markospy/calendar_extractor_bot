@@ -82,7 +82,9 @@ class Interfaz:
     def record_config(self):
         """Guarda la configuración de frecuencia de busqueda de noticias
         en un archivo .txt"""
-        with open(file=self.path + "config.txt", encoding="UTF-8-sig") as cg:
+        with open(
+            file=self.path + r"\config.txt", mode="w+", encoding="UTF-8-sig"
+        ) as cg:
             cg.write(self.frecuencia)
 
     def programar_rapado(self):
