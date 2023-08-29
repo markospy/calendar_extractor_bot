@@ -81,6 +81,10 @@ class Interfaz:
                     f"A raspagem foi programada\npara uma frecuência {self.frecuencia_text}."
                 )
 
+    def record_config(self):
+        with open(file=self.path, encoding="UTF-8-sig") as cg:
+            cg.write(self.frecuencia)
+
     def programar_rapado(self):
         if self.frecuencia == "1":
             schedule.every().day.at("00:00").do(scraping)
