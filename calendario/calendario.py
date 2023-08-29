@@ -25,10 +25,12 @@ class Calendario(webdriver.Chrome):
             self.quit()
 
     def land_first_page(self):
+        """Carga la página web"""
         print("Scraping...⏰")
         self.get(BASE_URL)
 
     def check_cookies(self):
+        """Checa la aparición de los cookies"""
         try:
             if self.find_element(
                 By.CSS_SELECTOR, "div.float-vertical-panel"
@@ -41,6 +43,7 @@ class Calendario(webdriver.Chrome):
             pass
 
     def select_date_range(self):
+        """Selecciona el rango de fecha semanal"""
         selection_date_range = self.find_element(
             By.CSS_SELECTOR, 'label[for="filterDate1"]'
         )
@@ -48,6 +51,7 @@ class Calendario(webdriver.Chrome):
             selection_date_range.click()
 
     def select_importance_event(self):
+        """"""
         state_importance_event = self.find_elements(
             By.CSS_SELECTOR, 'input[name="importance"]'
         )
@@ -81,6 +85,8 @@ class Calendario(webdriver.Chrome):
                 option[1].click()
 
     def select_flags(self):
+        """Filta las monedad de mayor líquidez: EUR, GBP, USD, AUD,
+        CAD, CHF, NZD, JPY"""
         selection_flags = self.find_elements(
             By.CSS_SELECTOR, "#economicCalendarFilterCurrency label"
         )
@@ -100,6 +106,7 @@ class Calendario(webdriver.Chrome):
                 i.click()
 
     def extract_hours(self):
+        """Extrae la horas de cada noticia"""
         sleep(15)
         _hours = self.find_elements(By.CSS_SELECTOR, ".ec-table__col_time")
         for hour in _hours:
@@ -112,11 +119,13 @@ class Calendario(webdriver.Chrome):
                 self.hours.append(hour.text)
 
     def extract_flags(self):
+        """Extrae la moneda que afecta cada noticia"""
         _flags = self.find_elements(By.CSS_SELECTOR, ".ec-table__curency-name")
         for flag in _flags:
             self.flags.append(flag.text)
 
     def extract_importances(self):
+        """Extrae la importancia de cada noticia"""
         _importances = self.find_elements(
             By.CSS_SELECTOR,
             ".ec-table__col.ec-table__col_time span",

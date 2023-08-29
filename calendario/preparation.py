@@ -12,12 +12,14 @@ class ConvertNumber:
         self.df = dataframe
 
     def clear_df(self):
+        """Limpia el dataframe de los eventos que se toman todo el día"""
         eliminar = self.df.loc[self.df[0] == "Todo el día"]
         self.df = self.df.drop(eliminar.index)
         self.df.reset_index(inplace=True, drop=True)
         self.df[0] = pd.to_datetime(self.df[0])
 
     def df_time_to_number(self):
+        """Convierte un str con la información de la hora en un número flotante"""
         for i in range(self.df.shape[0]):
             hour = int(self.df.iloc[i, 0].hour)
             minute = int(self.df.iloc[i, 0].minute)
@@ -25,6 +27,9 @@ class ConvertNumber:
             self.df.iloc[i, 0] = hour + minute
 
     def df_day_to_number(self):
+        """Crea una columna con el día de la semana en forma de número entero.
+        Empieza con domingo 0 y termina con sábado 6
+        """
         self.df[3] = 0
         day = 0
         for i in range(self.df.shape[0]):

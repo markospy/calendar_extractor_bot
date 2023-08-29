@@ -40,6 +40,7 @@ class Interfaz:
         self.frecuencia_text = ""
 
     def menu(self):
+        """Menu para que el usuario interactué y configure el bot"""
         while self.idioma != "es" and self.idioma != "en" and self.idioma != "po":
             print("Seleccione su idioma")
             print("Select you lenguage")
@@ -82,10 +83,13 @@ class Interfaz:
                 )
 
     def record_config(self):
-        with open(file=self.path, encoding="UTF-8-sig") as cg:
+        """Guarda la configuración de frecuencia de busqueda de noticias
+        en un archivo .txt"""
+        with open(file=self.path + "config.txt", encoding="UTF-8-sig") as cg:
             cg.write(self.frecuencia)
 
     def programar_rapado(self):
+        """Programa el bot en base a la configuración colocada"""
         if self.frecuencia == "1":
             schedule.every().day.at("00:00").do(scraping)
         elif self.frecuencia == "2":
