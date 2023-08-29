@@ -48,7 +48,7 @@ class DataframeCreator:
         """
         dataframe.to_csv(
             self.path,
-            encoding="utf-8",
+            encoding="utf-8-sig",
             sep=",",
             index=False,
             header=False,
