@@ -24,34 +24,6 @@ class ConvertNumber:
             minute = minute / 60
             self.df.iloc[i, 0] = hour + minute
 
-    def df_currency_to_number(self):
-        for i in range(self.df.shape[0]):
-            match self.df.iloc[i, 2].strip():
-                case "AUD":
-                    self.df.iloc[i, 2] = 1
-                case "CAD":
-                    self.df.iloc[i, 2] = 2
-                case "CHF":
-                    self.df.iloc[i, 2] = 3
-                case "EUR":
-                    self.df.iloc[i, 2] = 4
-                case "GBP":
-                    self.df.iloc[i, 2] = 5
-                case "JPY":
-                    self.df.iloc[i, 2] = 6
-                case "USD":
-                    self.df.iloc[i, 2] = 7
-                case "NZD":
-                    self.df.iloc[i, 2] = 8
-
-    def df_importance_to_number(self):
-        for i in range(self.df.shape[0]):
-            match self.df.iloc[i, 1].strip():
-                case "Media":
-                    self.df.iloc[i, 1] = 3
-                case "Alta":
-                    self.df.iloc[i, 1] = 4
-
     def df_day_to_number(self):
         self.df[3] = 0
         day = 0
