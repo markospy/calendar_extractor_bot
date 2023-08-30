@@ -12,7 +12,9 @@ class Calendario(webdriver.Chrome):
     def __init__(self, driver_path="C:/SeleniumDrivers", teardown=False):
         self.driver_path = driver_path
         self.teardow = teardown
-        os.environ["PATH"] = self.driver_path
+        os.environ["PATH"] += self.driver_path
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")
         super(Calendario, self).__init__()
         self.implicitly_wait(5)
         self.maximize_window()
