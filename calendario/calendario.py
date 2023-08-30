@@ -12,7 +12,7 @@ class Calendario(webdriver.Chrome):
     def __init__(self, driver_path="C:/SeleniumDrivers", teardown=False):
         self.driver_path = driver_path
         self.teardow = teardown
-        os.environ["PATH"] = self.driver_path
+        os.environ["PATH"] += self.driver_path
         super(Calendario, self).__init__()
         self.implicitly_wait(5)
         self.maximize_window()
@@ -122,7 +122,7 @@ class Calendario(webdriver.Chrome):
         """Extrae la moneda que afecta cada noticia"""
         _flags = self.find_elements(By.CSS_SELECTOR, ".ec-table__curency-name")
         for flag in _flags:
-            self.flags.append(flag.text)
+            self.flags.append(flag.text.strip())
 
     def extract_importances(self):
         """Extrae la importancia de cada noticia"""
@@ -132,4 +132,4 @@ class Calendario(webdriver.Chrome):
         )
         for importance in _importances:
             if importance.get_attribute("title") != "":
-                self.importances.append(importance.get_attribute("title"))
+                self.importances.append(importance.get_attribute("title").strip())

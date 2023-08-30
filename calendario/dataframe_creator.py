@@ -54,4 +54,4 @@ class DataframeCreator:
             header=False,
         )
 
-        print("Scraping   🆗")
+        print("Scraping   🆗Ok")
