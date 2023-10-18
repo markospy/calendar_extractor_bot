@@ -24,8 +24,8 @@ def scraping(file_dir):
         creator = DataframeCreator(file_dir, [bot.hours, bot.importances, bot.flags])
         convert = ConvertNumber(creator.df)
         convert.clear_df()
-        convert.df_time_to_number()
         convert.df_day_to_number()
+        convert.df_time_to_number()
         creator.df_save_csv(convert.df)
 
 

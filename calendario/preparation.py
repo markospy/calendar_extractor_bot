@@ -19,12 +19,16 @@ class ConvertNumber:
         self.df[0] = pd.to_datetime(self.df[0])
 
     def df_time_to_number(self):
-        """Convierte un str con la información de la hora en un número flotante"""
+        """Desecha la fecha y se queda solo con la hora en formato 00:00"""
         for i in range(self.df.shape[0]):
-            hour = int(self.df.iloc[i, 0].hour)
-            minute = int(self.df.iloc[i, 0].minute)
-            minute = minute / 60
-            self.df.iloc[i, 0] = hour + minute
+            print("Fecha actual: ", self.df.iloc[i, 0])
+            print(self.df.iloc[i, 0].hour)
+            print(self.df.iloc[i, 0].minute)
+            hour = str(self.df.iloc[i, 0].hour)
+            minute = str(self.df.iloc[i, 0].minute)
+            self.df.iloc[i, 0] = hour + ":" + minute
+            print(hour + ":" + minute)
+            print("Hora actual: ", self.df.iloc[i, 0])
 
     def df_day_to_number(self):
         """Crea una columna con el día de la semana en forma de número entero.
@@ -34,7 +38,9 @@ class ConvertNumber:
         day = 0
         for i in range(self.df.shape[0]):
             if i > 0:
-                if self.df.iloc[i, 0] >= self.df.iloc[i - 1, 0]:
+                hora_actual = self.df.iloc[i - 1, 0]
+                hora_posterior = self.df.iloc[i, 0]
+                if hora_posterior.hour >= hora_actual.hour:
                     self.df.iloc[i, 3] = day
                 else:
                     day += 1

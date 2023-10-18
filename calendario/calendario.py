@@ -9,11 +9,18 @@ from selenium.common.exceptions import NoSuchElementException
 class Calendario(webdriver.Chrome):
     """Extraer datos de las noticias de mediano y alto impacto"""
 
-    def __init__(self, driver_path="C:/SeleniumDrivers", teardown=False):
+    def __init__(
+        self, driver_path="C:/SeleniumDrivers/chromedriver.exe", teardown=False
+    ):
         self.driver_path = driver_path
         self.teardow = teardown
-        os.environ["PATH"] += self.driver_path
-        super(Calendario, self).__init__()
+        os.environ["PATH"] += os.pathsep + os.path.dirname(
+            self.driver_path
+        )  # Agregar la ruta del controlador al PATH
+        super(Calendario, self).__init__(
+            self.driver_path  # Agregar la ruta del controlador al PATH
+        )
+
         self.implicitly_wait(5)
         self.maximize_window()
         self.hours = []
