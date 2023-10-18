@@ -1,5 +1,6 @@
 from selenium.common.exceptions import WebDriverException
 from calendario.interfaz import Interfaz, scraping
+from calendario.calendario import Calendario
 
 from calendario.calendario import Calendario
 
