@@ -1,7 +1,7 @@
 import schedule
 import time
 from calendario.calendario import Calendario
-from calendario.preparation import ConvertNumber
+from calendario.preparation import Format
 from calendario.dataframe_creator import DataframeCreator
 
 
@@ -22,7 +22,7 @@ def scraping(file_dir):
         bot.extract_flags()
         bot.check_cookies()
         creator = DataframeCreator(file_dir, [bot.hours, bot.importances, bot.flags])
-        convert = ConvertNumber(creator.df)
+        convert = Format(creator.df)
         convert.clear_df()
         convert.df_day_to_number()
         convert.df_time_to_number()
@@ -30,6 +30,8 @@ def scraping(file_dir):
 
 
 class Interfaz:
+    """Interfaz en la línea de comando."""
+
     def __init__(self) -> None:
         self.path = ""
         self.idioma = ""
@@ -37,7 +39,7 @@ class Interfaz:
         self.frecuencia_text = ""
 
     def menu(self):
-        """Menu para que el usuario interactué y configure el bot"""
+        """Menu para que el usuario interactué y configure el bot."""
         while self.idioma != "es" and self.idioma != "en" and self.idioma != "po":
             print("Seleccione su idioma")
             print("Select you lenguage")
@@ -88,7 +90,7 @@ class Interfaz:
             cg.write(self.frecuencia)
 
     def programar_rapado(self):
-        """Programa el bot en base a la configuración colocada"""
+        """Programa la frecuencia de ejecución del bot en base a la configuración colocada."""
         if self.frecuencia == "1":
             schedule.every().day.at("00:00").do(scraping)
         elif self.frecuencia == "2":

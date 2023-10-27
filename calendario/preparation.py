@@ -1,8 +1,8 @@
 import pandas as pd
 
 
-class ConvertNumber:
-    """Convertir datos extraidos a valores númericos.
+class Format:
+    """Prepara el dataframe creado por DataframeCreator.
 
     La lista deberá contener la información en este orden:
     [hours, importances, flags]
@@ -19,10 +19,16 @@ class ConvertNumber:
         self.df[0] = pd.to_datetime(self.df[0])
 
     def df_time_to_number(self):
-        """Desecha la fecha y se queda solo con la hora en formato 00:00."""
+        """Desecha la fecha y se queda solo con la hora en formato HH:MM"""
         for i in range(self.df.shape[0]):
             hour = str(self.df.iloc[i, 0].hour)
             minute = str(self.df.iloc[i, 0].minute)
+
+            if len(minute) < 2:
+                minute = "0" + minute
+            if len(hour) < 2:
+                hour = "0" + hour
+
             self.df.iloc[i, 0] = hour + ":" + minute
 
     def df_day_to_number(self):

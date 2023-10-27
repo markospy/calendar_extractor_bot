@@ -44,7 +44,7 @@ class DataframeCreator:
 
     def df_save_csv(self, dataframe):
         """Guarda el dataframe en un archivo .csv. Puede ser el dataframe
-        creado por la misma clase o el resibido de la clase ConvertNumber
+        creado por la misma clase o el recibido de la clase ConvertNumber
         """
         dataframe.to_csv(
             self.path + r"\notices.csv",
@@ -54,4 +54,4 @@ class DataframeCreator:
             header=False,
         )
 
-        print("Scraping   🆗Ok")
+        print("Scraping 🆗")
