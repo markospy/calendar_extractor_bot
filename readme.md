@@ -19,7 +19,7 @@ Deberás configurar el bot en el menú interactivo de la línea de comandos. Pod
 
 Asegurate de que el directorio que proporciones termine con "\\". Ejemplo:
 
-C:\Users\Marcos\Desktop\
+    C:\Users\Marcos\Desktop\
 
 El .csv tendrá 4 columnas: hora, impacto, moneda y día de la semana. El día de la semana tomará un valor entre 0 y 6, de lunes a sábado.
 
