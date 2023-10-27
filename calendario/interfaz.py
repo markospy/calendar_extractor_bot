@@ -81,14 +81,6 @@ class Interfaz:
                     f"A raspagem foi programada\npara uma frecuência {self.frecuencia_text}."
                 )
 
-    def record_config(self):
-        """Guarda la configuración de frecuencia de busqueda de noticias
-        en un archivo .txt"""
-        with open(
-            file=self.path + r"\config.txt", mode="w+", encoding="UTF-8-sig"
-        ) as cg:
-            cg.write(self.frecuencia)
-
     def programar_rapado(self):
         """Programa la frecuencia de ejecución del bot en base a la configuración colocada."""
         if self.frecuencia == "1":
