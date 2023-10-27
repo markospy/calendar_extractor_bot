@@ -119,7 +119,6 @@ class Calendario(webdriver.Chrome):
         for hour in _hours:
             if hour.text == "Todo el día":
                 self.hours.append(hour.text)
-                print(type(hour.text))
             elif hour.text.endswith("(prov.)"):
                 self.hours.append(hour.text[0:5])
             elif hour.text != "" and len(hour.text) <= 5:
