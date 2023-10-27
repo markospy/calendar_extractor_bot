@@ -17,6 +17,10 @@ Para correrlo debes ejecutar el archivo `run.py` en la línea de comando:
 
 Deberás configurar el bot en el menú interactivo de la línea de comandos. Podrás escoger la frecuencia de raspado y la carpeta a donde se guardará el alrchivo notices.csv que contendrá las noticias. El mismo se reescribirá con cada nuevo raspado.
 
+Asegurate de que el directorio que proporciones termine con "\\". Ejemplo:
+
+C:\Users\Marcos\Desktop\
+
 El .csv tendrá 4 columnas: hora, impacto, moneda y día de la semana. El día de la semana tomará un valor entre 0 y 6, de lunes a sábado.
 
 *Espero que te sea de utilidad. Cualquier recomendación o mejora será bien recibida.*
