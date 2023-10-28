@@ -46,6 +46,7 @@ class DataframeCreator:
         """Guarda el dataframe en un archivo .csv. Puede ser el dataframe
         creado por la misma clase o el recibido de la clase ConvertNumber
         """
+
         dataframe.to_csv(
             self.path + r"notices.csv",
             encoding="utf-8-sig",

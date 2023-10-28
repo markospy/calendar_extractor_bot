@@ -13,6 +13,7 @@ class Format:
 
     def clear_df(self):
         """Limpia el dataframe de los eventos que se toman todo el día."""
+
         eliminar = self.df.loc[self.df[0] == "Todo el día"]
         self.df = self.df.drop(eliminar.index)
         self.df.reset_index(inplace=True, drop=True)
@@ -20,6 +21,8 @@ class Format:
 
     def df_time_to_number(self):
         """Desecha la fecha y se queda solo con la hora en formato HH:MM"""
+
+        self.df[4] = 0
         for i in range(self.df.shape[0]):
             hour = str(pd.to_datetime(self.df.iloc[i, 0]).hour)
             minute = str(pd.to_datetime(self.df.iloc[i, 0]).minute)
@@ -29,12 +32,14 @@ class Format:
             if len(hour) < 2:
                 hour = "0" + hour
 
-            self.df.iloc[i, 0] = hour + ":" + minute
+            self.df.iloc[i, 4] = hour + ":" + minute
+        self.df = self.df.iloc[:, 1:]
 
     def df_day_to_number(self):
         """Crea una columna con el día de la semana en forma de número entero.
         Empieza con domingo 0 y termina con sábado 6.
         """
+
         self.df[3] = 0
         day = 0
         for i in range(self.df.shape[0]):
