@@ -28,7 +28,6 @@ class Format:
                 minute = "0" + minute
             if len(hour) < 2:
                 hour = "0" + hour
-            print(hour, ":", minute)
 
             self.df.iloc[i, 0] = hour + ":" + minute
 
