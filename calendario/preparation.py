@@ -21,13 +21,14 @@ class Format:
     def df_time_to_number(self):
         """Desecha la fecha y se queda solo con la hora en formato HH:MM"""
         for i in range(self.df.shape[0]):
-            hour = str(self.df.iloc[i, 0].hour)
-            minute = str(self.df.iloc[i, 0].minute)
+            hour = str(pd.to_datetime(self.df.iloc[i, 0]).hour)
+            minute = str(pd.to_datetime(self.df.iloc[i, 0]).minute)
 
             if len(minute) < 2:
                 minute = "0" + minute
             if len(hour) < 2:
                 hour = "0" + hour
+            print(hour, ":", minute)
 
             self.df.iloc[i, 0] = hour + ":" + minute
 
